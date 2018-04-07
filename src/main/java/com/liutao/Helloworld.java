@@ -2,6 +2,7 @@ package com.liutao;
 
 public class Helloworld {
 	public static void main(String[] args) {
-		System.out.println("Hello world!!!");
+		long v = 2;
+		System.out.println(v << 56);
 	}
 }

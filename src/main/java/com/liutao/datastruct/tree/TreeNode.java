@@ -1,4 +1,4 @@
-package com.liutao.tree;
+package com.liutao.datastruct.tree;
 
 import java.util.ArrayList;
 import java.util.List;
