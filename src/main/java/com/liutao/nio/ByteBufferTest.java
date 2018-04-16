@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+/**
+ * NIO，理解为面向缓冲区的读、写操作
+ * @author missbaby
+ *
+ */
 public class ByteBufferTest {
 	public static void main(String[] args) {
 		ByteBuffer buffer;
@@ -29,6 +34,7 @@ public class ByteBufferTest {
 				buffer.flip();
 				System.out.println("当前位置是："+buffer.position()+", 限制位是："+buffer.limit());
 				//把缓冲区的内容读出来，转换为String，并且打印
+				
 				String readOne = new String(buffer.array());
 				System.out.println("===================content start:===============");
 				System.out.println(readOne);

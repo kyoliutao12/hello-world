@@ -12,27 +12,27 @@ public class DiscardServerHandler extends ChannelHandlerAdapter{
 
         try {
             ByteBuf in = (ByteBuf) msg;
-            // ´òÓ¡¿Í»§¶ËÊäÈë£¬´«Êä¹ýÀ´µÄµÄ×Ö·û
+            // ï¿½ï¿½Ó¡ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½Ö·ï¿½
             System.out.print(in.toString(CharsetUtil.UTF_8));
         } finally {
             /**
-             * ByteBufÊÇÒ»¸öÒýÓÃ¼ÆÊý¶ÔÏó£¬Õâ¸ö¶ÔÏó±ØÐëÏÔÊ¾µØµ÷ÓÃrelease()·½·¨À´ÊÍ·Å¡£
-             * Çë¼Ç×¡´¦ÀíÆ÷µÄÖ°ÔðÊÇÊÍ·ÅËùÓÐ´«µÝµ½´¦ÀíÆ÷µÄÒýÓÃ¼ÆÊý¶ÔÏó¡£
+             * ByteBufï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Øµï¿½ï¿½ï¿½release()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·Å¡ï¿½
+             * ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
              */
-            // Å×ÆúÊÕµ½µÄÊý¾Ý
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             ReferenceCountUtil.release(msg);
         }
-
+        
     }
 	
 	@Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         /**
-         * exceptionCaught() ÊÂ¼þ´¦Àí·½·¨ÊÇµ±³öÏÖ Throwable ¶ÔÏó²Å»á±»µ÷ÓÃ£¬¼´µ± Netty ÓÉÓÚ IO
-         * ´íÎó»òÕß´¦ÀíÆ÷ÔÚ´¦ÀíÊÂ¼þÊ±Å×³öµÄÒì³£Ê±¡£ÔÚ´ó²¿·ÖÇé¿öÏÂ£¬²¶»ñµÄÒì³£Ó¦¸Ã±»¼ÇÂ¼ÏÂÀ´ ²¢ÇÒ°Ñ¹ØÁªµÄ channel
-         * ¸ø¹Ø±Õµô¡£È»¶øÕâ¸ö·½·¨µÄ´¦Àí·½Ê½»áÔÚÓöµ½²»Í¬Òì³£µÄÇé¿öÏÂÓÐ²» Í¬µÄÊµÏÖ£¬±ÈÈçÄã¿ÉÄÜÏëÔÚ¹Ø±ÕÁ¬½ÓÖ®Ç°·¢ËÍÒ»¸ö´íÎóÂëµÄÏìÓ¦ÏûÏ¢¡£
+         * exceptionCaught() ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ Throwable ï¿½ï¿½ï¿½ï¿½Å»á±»ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ Netty ï¿½ï¿½ï¿½ï¿½ IO
+         * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Ê±ï¿½×³ï¿½ï¿½ï¿½ï¿½ì³£Ê±ï¿½ï¿½ï¿½Ú´ó²¿·ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£Ó¦ï¿½Ã±ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò°Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ channel
+         * ï¿½ï¿½ï¿½Ø±Õµï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ Í¬ï¿½ï¿½Êµï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹Ø±ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ï¢ï¿½ï¿½
          */
-        // ³öÏÖÒì³£¾Í¹Ø±Õ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½Í¹Ø±ï¿½
         cause.printStackTrace();
         ctx.close();
     }

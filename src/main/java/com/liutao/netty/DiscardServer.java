@@ -1,5 +1,6 @@
 package com.liutao.netty;
 
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -19,29 +20,29 @@ public class DiscardServer {
 	public void run() throws Exception {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        System.out.println("×¼±¸ÔËĞĞ¶Ë¿Ú£º" + port);
+        System.out.println("×¼ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶Ë¿Ú£ï¿½" + port);
         
         try {
             /**
-             * ServerBootstrap ÊÇÒ»¸öÆô¶¯NIO·şÎñµÄ¸¨ÖúÆô¶¯Àà Äã¿ÉÒÔÔÚÕâ¸ö·şÎñÖĞÖ±½ÓÊ¹ÓÃChannel
+             * ServerBootstrap ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½NIOï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ê¹ï¿½ï¿½Channel
              */
             ServerBootstrap b = new ServerBootstrap();
             /**
-             * ÕâÒ»²½ÊÇ±ØĞëµÄ£¬Èç¹ûÃ»ÓĞÉèÖÃgroup½«»á±¨java.lang.IllegalStateException: group not
-             * setÒì³£
+             * ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½groupï¿½ï¿½ï¿½á±¨java.lang.IllegalStateException: group not
+             * setï¿½ì³£
              */
             b = b.group(bossGroup, workerGroup);
             /***
-             * ServerSocketChannelÒÔNIOµÄselectorÎª»ù´¡½øĞĞÊµÏÖµÄ£¬ÓÃÀ´½ÓÊÕĞÂµÄÁ¬½Ó
-             * ÕâÀï¸æËßChannelÈçºÎ»ñÈ¡ĞÂµÄÁ¬½Ó.
+             * ServerSocketChannelï¿½ï¿½NIOï¿½ï¿½selectorÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½
+             * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Channelï¿½ï¿½Î»ï¿½È¡ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½.
              */
             b = b.channel(NioServerSocketChannel.class);
             /***
-             * ÕâÀïµÄÊÂ¼ş´¦ÀíÀà¾­³£»á±»ÓÃÀ´´¦ÀíÒ»¸ö×î½üµÄÒÑ¾­½ÓÊÕµÄChannel¡£ ChannelInitializerÊÇÒ»¸öÌØÊâµÄ´¦ÀíÀà£¬
-             * ËûµÄÄ¿µÄÊÇ°ïÖúÊ¹ÓÃÕßÅäÖÃÒ»¸öĞÂµÄChannel¡£
-             * Ò²ĞíÄãÏëÍ¨¹ıÔö¼ÓÒ»Ğ©´¦ÀíÀà±ÈÈçNettyServerHandlerÀ´ÅäÖÃÒ»¸öĞÂµÄChannel
-             * »òÕßÆä¶ÔÓ¦µÄChannelPipelineÀ´ÊµÏÖÄãµÄÍøÂç³ÌĞò¡£ µ±ÄãµÄ³ÌĞò±äµÄ¸´ÔÓÊ±£¬¿ÉÄÜÄã»áÔö¼Ó¸ü¶àµÄ´¦ÀíÀàµ½piplineÉÏ£¬
-             * È»ºóÌáÈ¡ÕâĞ©ÄäÃûÀàµ½×î¶¥²ãµÄÀàÉÏ¡£
+             * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¾­ï¿½ï¿½ï¿½á±»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Õµï¿½Channelï¿½ï¿½ ChannelInitializerï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½à£¬
+             * ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½Channelï¿½ï¿½
+             * Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ğ©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½NettyServerHandlerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½Channel
+             * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ChannelPipelineï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½àµ½piplineï¿½Ï£ï¿½
+             * È»ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ğ©ï¿½ï¿½ï¿½ï¿½ï¿½àµ½ï¿½î¶¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¡ï¿½
              */
             b = b.childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                 @Override
@@ -54,28 +55,28 @@ public class DiscardServer {
                 }
             });
             /***
-             * Äã¿ÉÒÔÉèÖÃÕâÀïÖ¸¶¨µÄÍ¨µÀÊµÏÖµÄÅäÖÃ²ÎÊı¡£ ÎÒÃÇÕıÔÚĞ´Ò»¸öTCP/IPµÄ·şÎñ¶Ë£¬
-             * Òò´ËÎÒÃÇ±»ÔÊĞíÉèÖÃsocketµÄ²ÎÊıÑ¡Ïî±ÈÈçtcpNoDelayºÍkeepAlive¡£
-             * Çë²Î¿¼ChannelOptionºÍÏêÏ¸µÄChannelConfigÊµÏÖµÄ½Ó¿ÚÎÄµµÒÔ´Ë¿ÉÒÔ¶ÔChannelOptionsµÄÓĞÒ»¸ö´ó¸ÅµÄÈÏÊ¶¡£
+             * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½Êµï¿½Öµï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ´Ò»ï¿½ï¿½TCP/IPï¿½Ä·ï¿½ï¿½ï¿½Ë£ï¿½
+             * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½socketï¿½Ä²ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½tcpNoDelayï¿½ï¿½keepAliveï¿½ï¿½
+             * ï¿½ï¿½Î¿ï¿½ChannelOptionï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ChannelConfigÊµï¿½ÖµÄ½Ó¿ï¿½ï¿½Äµï¿½ï¿½Ô´Ë¿ï¿½ï¿½Ô¶ï¿½ChannelOptionsï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½ï¿½Ê¶ï¿½ï¿½
              */
             b = b.option(ChannelOption.SO_BACKLOG, 128);
             /***
-             * option()ÊÇÌá¹©¸øNioServerSocketChannelÓÃÀ´½ÓÊÕ½øÀ´µÄÁ¬½Ó¡£
-             * childOption()ÊÇÌá¹©¸øÓÉ¸¸¹ÜµÀServerChannel½ÓÊÕµ½µÄÁ¬½Ó£¬
-             * ÔÚÕâ¸öÀı×ÓÖĞÒ²ÊÇNioServerSocketChannel¡£
+             * option()ï¿½ï¿½ï¿½á¹©ï¿½ï¿½NioServerSocketChannelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½
+             * childOption()ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½É¸ï¿½ï¿½Üµï¿½ServerChannelï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½
+             * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½NioServerSocketChannelï¿½ï¿½
              */
             b = b.childOption(ChannelOption.SO_KEEPALIVE, true);
             /***
-             * °ó¶¨¶Ë¿Ú²¢Æô¶¯È¥½ÓÊÕ½øÀ´µÄÁ¬½Ó
+             * ï¿½ó¶¨¶Ë¿Ú²ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
              */
             ChannelFuture f = b.bind(port).sync();
             /**
-             * ÕâÀï»áÒ»Ö±µÈ´ı£¬Ö±µ½socket±»¹Ø±Õ
+             * ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ö±ï¿½È´ï¿½ï¿½ï¿½Ö±ï¿½ï¿½socketï¿½ï¿½ï¿½Ø±ï¿½
              */
             f.channel().closeFuture().sync();
         } finally {
             /***
-             * ¹Ø±Õ
+             * ï¿½Ø±ï¿½
              */
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
